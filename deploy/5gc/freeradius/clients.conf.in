@@ -1,0 +1,7 @@
+# 5GC local SMF RADIUS client.
+# Values are rendered by install-5gc-local.sh and are not stored in Git.
+client localhost {
+	ipaddr = 127.0.0.1
+	secret = @RADIUS_SHARED_SECRET@
+	require_message_authenticator = yes
+}
