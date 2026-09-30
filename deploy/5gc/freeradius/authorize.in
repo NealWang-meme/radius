@@ -1,2 +1,2 @@
 # 5GC DN-AAA test identity. The password is injected at installation time.
-9001 Cleartext-Password := "@RADIUS_TEST_PASSWORD@"
+9001 Password.Cleartext := "@RADIUS_TEST_PASSWORD@"

@@ -41,7 +41,13 @@ sed \
 	> "${DESTDIR}/usr/local/etc/freeradius/mods-config/files/authorize"
 
 chmod 0640 "${DESTDIR}/usr/local/etc/freeradius/clients.conf" \
-	"${DESTDIR}/usr/local/etc/freeradius/mods-config/files/authorize"
+    "${DESTDIR}/usr/local/etc/freeradius/mods-config/files/authorize"
+
+# FreeRADIUS instantiates the bundled PEAP/TLS modules during configuration
+# loading, so provide their local test certificates even when the 5GC flow
+# uses EAP-MD5.  The generated private keys stay in the deployment root.
+make -C "${DESTDIR}/usr/local/etc/freeradius/certs" all
+
 install -m 0644 "${ROOT_DIR}/deploy/systemd/freeradius.service" \
 	"${DESTDIR}/lib/systemd/system/freeradius.service"
 

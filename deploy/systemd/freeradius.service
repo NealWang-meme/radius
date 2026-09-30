@@ -7,6 +7,7 @@ Wants=network-online.target
 Type=notify
 User=freerad
 Group=freerad
+Environment=FR_LIBRARY_PATH=/usr/local/lib
 RuntimeDirectory=freeradius
 RuntimeDirectoryMode=0775
 ExecStartPre=/usr/local/sbin/radiusd -XC -d /usr/local/etc/freeradius -D /usr/local/share
