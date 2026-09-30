@@ -1,0 +1,23 @@
+[Unit]
+Description=FreeRADIUS 4 for 5GC DN-AAA
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+User=freerad
+Group=freerad
+RuntimeDirectory=freeradius
+RuntimeDirectoryMode=0775
+ExecStartPre=/usr/local/sbin/radiusd -XC -d /usr/local/etc/freeradius -D /usr/local/share
+ExecStart=/usr/local/sbin/radiusd -f -d /usr/local/etc/freeradius -D /usr/local/share
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ReadOnlyDirectories=/usr/local/etc/freeradius
+ReadWriteDirectories=/var/log/freeradius /run/freeradius
+
+[Install]
+WantedBy=multi-user.target

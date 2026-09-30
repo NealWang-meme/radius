@@ -9,7 +9,8 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 PREFIX="${PREFIX:-/usr/local}"
 SYSCONFDIR="${SYSCONFDIR:-${PREFIX}/etc}"
 RADIUS_CONF_DIR="${RADIUS_CONF_DIR:-${SYSCONFDIR}/freeradius}"
-RADIUS_DICT_DIR="${RADIUS_DICT_DIR:-${PREFIX}/share/freeradius/dictionary}"
+# configure expects the data root and appends freeradius/dictionary itself.
+RADIUS_DICT_DIR="${RADIUS_DICT_DIR:-${PREFIX}/share}"
 RADIUS_LOG_DIR="${RADIUS_LOG_DIR:-/var/log/freeradius}"
 
 cd "${ROOT_DIR}"
